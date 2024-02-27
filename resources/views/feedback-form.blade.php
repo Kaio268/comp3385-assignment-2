@@ -3,17 +3,21 @@
 @section('content')
 <div class="container">
     <h2>Feedback Form</h2>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
     <form action="/feedback/send" method="POST">
         @csrf
         <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
-            @error('name')
+            <label for="fullname">Full Name:</label>
+            <input type="text" class="form-control @error('fullname') is-invalid @enderror" id="fullname" name="fullname" value="{{ old('fullname') }}" required>
+            @error('fullname')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
@@ -25,9 +29,9 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="message">Message:</label>
-            <textarea class="form-control @error('message') is-invalid @enderror" id="message" name="message" rows="3" required>{{ old('message') }}</textarea>
-            @error('message')
+            <label for="comment">Message:</label>
+            <textarea class="form-control @error('comment') is-invalid @enderror" id="comment" name="comment" rows="3" required>{{ old('comment') }}</textarea>
+            @error('comment')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>

@@ -21,6 +21,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/about') }}">About</a>
                 </li>
+                <!-- Add this new list item for Feedback -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/feedback') }}">Feedback</a>
+                </li>
             </ul>
         </div>
     </div>
